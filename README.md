@@ -37,6 +37,16 @@ More practical tutorials and R code
 * https://cambiotraining.github.io/intro-machine-learning/
 
 
+## Acknowledgements
+
+All material is take from the following resources:
+
+* https://www.statlearning.com/resources-second-edition
+
+* https://cambiotraining.github.io/intro-machine-learning/
+
+
+
 ## Contact
 
 Soumya Banerjee
