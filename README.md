@@ -17,6 +17,19 @@ The Rmarkdown scripts and R scripts constitute the practical.
 
 ## Installation
 
+Clone or download this repository. 
+
+Then install R and R Studio. 
+
+* Install R
+
+    https://www.r-project.org/
+
+* and R Studio
+
+https://www.rstudio.com/products/rstudio/download/preview/
+
+
 From the command line run the R script `installer.R` to install all packages
 
 ```R
