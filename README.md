@@ -9,6 +9,11 @@ Resources for a practical on supervised machine learning
 
 The Rmarkdown scripts and R scripts constitute the practical.
 
+`cross_validation_practical.Rmd` shows the basics of cross-validation.
+
+`Ch8-baggboost-lab.Rmd` shows the basics of decision trees and random forests (bagging and boosting).
+
+`caret_rf.Rmd` shows the basics of using the `caret` package in R to build a machine learning pipeline.
 
 ## Installation
 
