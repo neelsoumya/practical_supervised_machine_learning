@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 ```{r setup, echo = FALSE}
 knitr::opts_chunk$set(error = TRUE)
 ```
@@ -322,51 +327,6 @@ mean((yhat.boost - boston.test)^2)
 ```
 
 In this case, using $\lambda=0.2$ leads to a lower test MSE than $\lambda=0.001$.
-
-
-
-
-
-## Bayesian Additive Regression Trees
-
-
-
-In this section  we use the `BART` package, and within it the `gbart()` function, to fit a Bayesian additive regression tree model to the `Boston` housing data set. The `gbart()` function  is
-designed for quantitative outcome variables. For binary outcomes,   `lbart()`  and  `pbart()`  are available.
-
-To run the `gbart()` function, we must first create matrices of predictors for the training and test data. We run BART with default settings.
-
-```{r chunk30}
-library(BART)
-x <- Boston[, 1:12]
-y <- Boston[, "medv"]
-xtrain <- x[train, ]
-ytrain <- y[train]
-xtest <- x[-train, ]
-ytest <- y[-train]
-set.seed(1)
-bartfit <- gbart(xtrain, ytrain, x.test = xtest)
-```
-
-Next we compute the test error.
-
-```{r chunk31}
-yhat.bart <- bartfit$yhat.test.mean
-mean((ytest - yhat.bart)^2)
-```
-
-
-On this data set, the test error of BART is lower than the test error of random forests and boosting.
-
-Now we can check how many times each variable appeared in the collection of trees.
-
-```{r chunk32}
-ord <- order(bartfit$varcount.mean, decreasing = T)
-bartfit$varcount.mean[ord]
-```
-
-
-
 
 
 
