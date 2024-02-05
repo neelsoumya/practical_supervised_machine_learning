@@ -41,6 +41,21 @@ OR
 run the script `installer.R` in R Studio.
 
 
+## Extra credit
+
+* Download data from
+
+https://archive.ics.uci.edu/datasets
+
+and train a classifier
+
+* Download data from
+
+https://github.com/neelsoumya/teaching_reproducible_science_R/blob/main/metagene_score.csv
+
+and train a classifier to predict yes/no (flag_yes_no)
+
+
 ## Resources
 
 Free PDF of book and R code 
