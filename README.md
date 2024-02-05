@@ -51,12 +51,19 @@ https://github.com/neelsoumya/teaching_reproducible_science_R/blob/main/metagene
 
 and train a classifier to predict yes/no (flag_yes_no). This would be a binary classifier. Do this with cross-validation.
 
+The data is also available here
+
+https://github.com/neelsoumya/practical_supervised_machine_learning/blob/main/metagene_score.csv
+
 * Download data from
 
 https://archive.ics.uci.edu/dataset/2/adult
 
 and train a classifier to predict if income > 50K or < 50K (binary classifier). Do this with cross-validation.
 
+The data is also available in the `adult` folder here
+
+https://github.com/neelsoumya/practical_supervised_machine_learning/tree/main/adult
 
 
 ## Resources
