@@ -29,6 +29,11 @@ Then install R and R Studio.
 
 https://www.rstudio.com/products/rstudio/download/preview/
 
+OR
+
+follow the instructions here:
+
+https://cambiotraining.github.io/intro-r/#Setup_instructions
 
 From the command line run the R script `installer.R` to install all packages
 
