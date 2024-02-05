@@ -43,17 +43,20 @@ run the script `installer.R` in R Studio.
 
 ## Extra credit
 
-* Download data from
-
-https://archive.ics.uci.edu/datasets
-
-and train a classifier
+For extra credit, do these problems.
 
 * Download data from
 
 https://github.com/neelsoumya/teaching_reproducible_science_R/blob/main/metagene_score.csv
 
-and train a classifier to predict yes/no (flag_yes_no)
+and train a classifier to predict yes/no (flag_yes_no). This would be a binary classifier. Do this with cross-validation.
+
+* Download data from
+
+https://archive.ics.uci.edu/dataset/2/adult
+
+and train a classifier to predict if income > 50K or < 50K (binary classifier). Do this with cross-validation.
+
 
 
 ## Resources
