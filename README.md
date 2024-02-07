@@ -48,9 +48,9 @@ OR
 run the script `installer.R` in R Studio.
 
 
-## Extra credit exercise
+## Exercise
 
-For extra credit, do these problems.
+For an exercise, do these problems.
 
 * Download data from
 
