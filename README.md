@@ -13,7 +13,9 @@ The Rmarkdown scripts and R scripts constitute the practical.
 
 `Ch8-baggboost-lab.Rmd` shows the basics of decision trees and random forests (bagging and boosting).
 
-`caret_rf.Rmd` shows the basics of using the `caret` package in R to build a machine learning pipeline.
+If you have time, you can try code in the `additional_code` folder:
+
+* `caret_rf.Rmd` shows the basics of using the `caret` package in R to build a machine learning pipeline.
 
 ## Installation
 
