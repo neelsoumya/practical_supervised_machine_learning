@@ -173,7 +173,7 @@ plot(tree.boston)
 text(tree.boston, pretty = 0)
 ```
 
-The variable `lstat` measures the percentage of individuals with {lower  socioeconomic status}, while the variable `rm` corresponds to the average number of rooms. The tree indicates that larger values of `rm`, or lower values of `lstat`, correspond to more expensive houses. For example, the tree predicts a median house price of $$45{,}400$ for homes in census tracts in which `rm >= 7.553`.
+The variable `lstat` measures the percentage of individuals with lower  socioeconomic status, while the variable `rm` corresponds to the average number of rooms. The tree indicates that larger values of `rm`, or lower values of `lstat`, correspond to more expensive houses. For example, the tree predicts a median house price of $45,400$ for homes in census tracts in which `rm >= 7.553`.
 
 
 It is worth noting that we could have fit a much bigger tree, by
@@ -205,7 +205,7 @@ mean((yhat - boston.test)^2)
 ```
 
 In other words, the  test set MSE associated with the regression tree is $35.29$.
-The square root of the MSE is therefore around $5.941$, indicating that this model leads to test predictions that are (on average) within approximately $$5{,}941$ of the true median home value for the census tract.
+The square root of the MSE is therefore around $5.941$, indicating that this model leads to test predictions that are (on average) within approximately $5{,}941$ of the true median home value for the census tract.
 
 
 
