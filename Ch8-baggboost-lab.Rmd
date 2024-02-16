@@ -24,6 +24,12 @@ and takes on a value of `No` otherwise.
 library(ISLR2)
 attach(Carseats)
 High <- factor(ifelse(Sales <= 8, "No", "Yes"))
+
+##################################
+# let us also view the dataset
+# summary(Carseats)
+# View(Carseats)
+##################################
 ```
 
 Finally, we use the `data.frame()` function to merge `High` with the rest of the `Carseats` data.
