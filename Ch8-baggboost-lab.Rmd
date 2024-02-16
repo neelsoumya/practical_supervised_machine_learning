@@ -39,6 +39,7 @@ Carseats <- data.frame(Carseats, High)
 ```
 
 We now  use the `tree()` function to fit a classification tree in order to predict `High` using all variables but `Sales`.
+Use as predictors all variables except Sales.
 The syntax of the `tree()` function is quite similar to that of the `lm()` function.
 
 ```{r chunk4}
