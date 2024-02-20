@@ -93,9 +93,12 @@ for around $77 \%$ of the locations in the test data set.
 
 ```{r chunk8}
 set.seed(2)
+
 train <- sample(1:nrow(Carseats), 200)
 Carseats.test <- Carseats[-train, ]
+
 High.test <- High[-train]
+
 tree.carseats <- tree(High ~ . - Sales, Carseats,
     subset = train)
 tree.pred <- predict(tree.carseats, Carseats.test,
