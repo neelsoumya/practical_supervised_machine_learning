@@ -112,21 +112,30 @@ table(tree.pred, High.test)
 
 (If you re-run the `predict()` function then you might get slightly different results, due to "ties": for instance, this can happen when the training observations corresponding to a terminal node are evenly split between `Yes` and `No` response values.)
 
-Next, we consider whether pruning the tree might lead to improved  results.
+Next, we consider whether pruning the tree might lead to improved results.
 The function `cv.tree()` performs cross-validation in order to  determine the optimal level of tree complexity; cost complexity pruning is used in order to select a sequence of trees for consideration.
 We use the argument `FUN = prune.misclass` in order to indicate that we want the classification error rate to guide the cross-validation and pruning process, rather than the default for the `cv.tree()` function, which is deviance. The `cv.tree()` function reports the number of terminal nodes of each tree considered (`size`) as well as the corresponding error rate and the value of the cost-complexity parameter used (`k`, which corresponds to $\alpha$ in (8.4)).
 
 ```{r chunk9}
 set.seed(7)
+
 cv.carseats <- cv.tree(tree.carseats, FUN = prune.misclass)
+
 names(cv.carseats)
 cv.carseats
+
+# how should we plot the cross-validation error?
+
+```
+
+```{r}
+# plot size vs. k
+plot(cv.carseats$k, cv.carseats$size)
+
 ```
 
 Despite its name, `dev` corresponds to the number of
-cross-validation errors. The tree with 9 terminal nodes results in only 74 cross-validation errors.  We plot
-the  error rate as a function of both `size` and
-`k`.
+cross-validation errors. The tree with 9 terminal nodes results in only 74 cross-validation errors.  We plot the  error rate as a function of both `size` and `k`.
 
 ```{r chunk10}
 par(mfrow = c(1, 2))
@@ -157,9 +166,14 @@ Now $77.5 \%$ of the test observations are correctly classified, so not only has
 If we increase the value of `best`, we obtain a larger pruned tree with lower classification accuracy:
 
 ```{r chunk13}
+
+# pick tree with 14 nodes
 prune.carseats <- prune.misclass(tree.carseats, best = 14)
+
+# olot tree
 plot(prune.carseats)
 text(prune.carseats, pretty = 0)
+
 tree.pred <- predict(prune.carseats, Carseats.test,
     type = "class")
 table(tree.pred, High.test)
@@ -175,10 +189,35 @@ table(tree.pred, High.test)
 
 Here we fit a regression tree to the `Boston`  data set. First, we create a training set, and fit the tree to the training data.
 
+This is a data set containing housing values in 506 suburbs of Boston.
+
+medv: median value of owner-occupied homes in $1000s (we need to predict this).
+
+Some of the features are:
+
+rm: average number of rooms per dwelling.
+
+lstat: lower status of the population (percent).
+
+crim: per capita crime rate by town.
+
+age: proportion of owner-occupied units built prior to 1940.
+
+
+
 ```{r chunk14}
 set.seed(1)
+
+# ?Boston
+
+# A data set containing housing values in 506 suburbs of Boston.
+
+# medv: median value of owner-occupied homes in $1000s.
+
 train <- sample(1:nrow(Boston), nrow(Boston) / 2)
+
 tree.boston <- tree(medv ~ ., Boston, subset = train)
+
 summary(tree.boston)
 ```
 
@@ -214,14 +253,16 @@ In keeping with the cross-validation results, we use the unpruned tree to make p
 
 ```{r chunk18}
 yhat <- predict(tree.boston, newdata = Boston[-train, ])
+
 boston.test <- Boston[-train, "medv"]
+
 plot(yhat, boston.test)
 abline(0, 1)
 mean((yhat - boston.test)^2)
 ```
 
-In other words, the  test set MSE associated with the regression tree is $35.29$.
-The square root of the MSE is therefore around $5.941$, indicating that this model leads to test predictions that are (on average) within approximately $5{,}941$ of the true median home value for the census tract.
+In other words, the test set MSE associated with the regression tree is $35.29$.
+The square root of the MSE is therefore around $5.941$, indicating that this model leads to test predictions that are (on average) within approximately $5941$ of the true median home value for the census tract.
 
 
 
@@ -238,20 +279,29 @@ We perform bagging as follows:
 
 ```{r chunk19}
 library(randomForest)
+
 set.seed(1)
+
 bag.boston <- randomForest(medv ~ ., data = Boston,
     subset = train, mtry = 12, importance = TRUE)
+
 bag.boston
+
+# try some of the other parameters of the function
+#   ?randomForest
+
 ```
 
 The argument `mtry = 12` indicates that all $12$ predictors should be considered for each split of the tree---in other words, that bagging should be done.
 How well does this bagged model perform on the test set?
 
 ```{r chunk20}
+
 yhat.bag <- predict(bag.boston, newdata = Boston[-train, ])
 plot(yhat.bag, boston.test)
 abline(0, 1)
 mean((yhat.bag - boston.test)^2)
+
 ```
 
 The test set MSE associated with the bagged regression tree is $23.42$, about two-thirds of that obtained using an optimally-pruned single tree.
@@ -302,10 +352,13 @@ The argument `n.trees = 5000` indicates that we want $5000$ trees, and the optio
 
 ```{r chunk25}
 library(gbm)
+
 set.seed(1)
+
 boost.boston <- gbm(medv ~ ., data = Boston[train, ],
     distribution = "gaussian", n.trees = 5000,
     interaction.depth = 4)
+
 ```
 
 The `summary()` function produces a relative influence plot and also outputs the relative influence statistics.
@@ -334,12 +387,16 @@ The test MSE obtained is $18.39$: this is superior to the test MSE of random for
 Here we take $\lambda=0.2$.
 
 ```{r chunk29}
+
 boost.boston <- gbm(medv ~ ., data = Boston[train, ],
     distribution = "gaussian", n.trees = 5000,
     interaction.depth = 4, shrinkage = 0.2, verbose = F)
+
 yhat.boost <- predict(boost.boston,
     newdata = Boston[-train, ], n.trees = 5000)
+
 mean((yhat.boost - boston.test)^2)
+
 ```
 
 In this case, using $\lambda=0.2$ leads to a lower test MSE than $\lambda=0.001$.
