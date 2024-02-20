@@ -26,6 +26,7 @@ and takes on a value of `No` otherwise.
 ```{r chunk2}
 library(ISLR2)
 attach(Carseats)
+
 High <- factor(ifelse(Sales <= 8, "No", "Yes"))
 
 ##################################
@@ -101,8 +102,10 @@ High.test <- High[-train]
 
 tree.carseats <- tree(High ~ . - Sales, Carseats,
     subset = train)
+
 tree.pred <- predict(tree.carseats, Carseats.test,
     type = "class")
+
 table(tree.pred, High.test)
 (104 + 50) / 200
 ```
