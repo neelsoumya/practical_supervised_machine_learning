@@ -63,9 +63,12 @@ Therefore, the estimated test MSE for the linear regression fit is $23.27$. We c
 
 lm.fit2 <- lm(mpg ~ poly(horsepower, 2), data = Auto, 
     subset = train)
+
 mean((mpg - predict(lm.fit2, Auto))[-train]^2)
+
 lm.fit3 <- lm(mpg ~ poly(horsepower, 3), data = Auto, 
     subset = train)
+
 mean((mpg - predict(lm.fit3, Auto))[-train]^2)
 
 ```
