@@ -106,7 +106,7 @@ These results are consistent with our previous findings: a model that predicts `
 ## Leave-One-Out Cross-Validation
 
 The LOOCV estimate can be automatically computed for any generalized linear model  using the `glm()` and `cv.glm()` functions.  In the lab for Chapter 4, we used the `glm()` function to perform logistic regression by passing in  the `family = "binomial"` argument.
- But if we use `glm()` to fit a model without passing in the `family` argument, then it  performs linear regression, just like the `lm()` function.
+But if we use `glm()` to fit a model without passing in the `family` argument, then it  performs linear regression, just like the `lm()` function.
 So for instance,
 
 ```{r chunk6}
@@ -126,13 +126,16 @@ coef(lm.fit)
 `cv.glm()`. The `cv.glm()` function is part of the `boot` library.
 
 ```{r chunk8}
+
 library(boot)
 glm.fit <- glm(mpg ~ horsepower, data = Auto)
+
 cv.err <- cv.glm(Auto, glm.fit)
+# The default is to set K equal to the number of observations in data which gives the usual leave-one-out cross-validation
 cv.err$delta
 ```
 
-The `cv.glm()` function produces a list with several components.  The two numbers in the `delta` vector contain the cross-validation results. In this case the numbers are identical (up to two decimal places) and correspond to the LOOCV statistic given in (5.1). Below, we discuss a situation in which the two numbers differ. Our cross-validation estimate for the test error is approximately $24.23$.
+The `cv.glm()` function produces a list with several components.  The two numbers in the `delta` vector contain the cross-validation results. In this case the numbers are identical (up to two decimal places). Below, we discuss a situation in which the two numbers differ. Our cross-validation estimate for the test error is approximately $24.23$.
 
 We can repeat this procedure for increasingly complex polynomial fits.
  To automate the process, we use the  `for()` function to initiate a *for loop* which iteratively fits polynomial regressions for polynomials of order $i=1$ to $i=10$, computes the associated cross-validation error, and stores it in the $i$th element of the vector `cv.error`.
@@ -140,6 +143,7 @@ We can repeat this procedure for increasingly complex polynomial fits.
 
 ```{r chunk9}
 cv.error <- rep(0, 10)
+
 for (i in 1:10) {
   glm.fit <- glm(mpg ~ poly(horsepower, i), data = Auto)
   cv.error[i] <- cv.glm(Auto, glm.fit)$delta[1]
