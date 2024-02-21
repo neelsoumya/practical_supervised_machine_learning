@@ -26,15 +26,23 @@ to these observations as the training set.
 
 ```{r chunk1}
 library(ISLR2)
+
 set.seed(1)
+
+nrow(Auto)
+# View(Auto)
+
 train <- sample(392, 196)
+
 ```
 
 (Here we use a shortcut in the sample command; see `?sample` for details.)
 We then use the `subset` option in `lm()` to fit a linear regression using only the observations corresponding to the training set.
 
 ```{r chunk2}
+
 lm.fit <- lm(mpg ~ horsepower, data = Auto, subset = train)
+
 ```
 
 We now  use
@@ -43,19 +51,23 @@ We now  use
   the `mean()` function to calculate the MSE of the $196$ observations in the validation set. Note that the `-train` index below selects  only the observations that are not in the training set.
 
 ```{r chunk3}
+
 attach(Auto)
 mean((mpg - predict(lm.fit, Auto))[-train]^2)
+
 ```
 
 Therefore, the estimated test MSE for the linear regression fit is $23.27$. We can use the `poly()` function to estimate the test error for the quadratic and cubic regressions.
 
 ```{r chunk4}
+
 lm.fit2 <- lm(mpg ~ poly(horsepower, 2), data = Auto, 
     subset = train)
 mean((mpg - predict(lm.fit2, Auto))[-train]^2)
 lm.fit3 <- lm(mpg ~ poly(horsepower, 3), data = Auto, 
     subset = train)
 mean((mpg - predict(lm.fit3, Auto))[-train]^2)
+
 ```
 
 These error rates are $18.72$ and $18.79$, respectively.
