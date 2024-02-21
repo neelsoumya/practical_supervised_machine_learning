@@ -33,6 +33,7 @@ nrow(Auto)
 # View(Auto)
 # explore the Auto dataset
 plot(Auto$horsepower, Auto$mpg)
+# how would we model this?
 
 train <- sample(392, 196)
 
@@ -79,16 +80,22 @@ These error rates are $18.72$ and $18.79$, respectively.
 If we choose a different training set instead, then we will obtain somewhat different errors on the validation set.
 
 ```{r chunk5}
+
 set.seed(2)
+
 train <- sample(392, 196)
+
 lm.fit <- lm(mpg ~ horsepower, subset = train)
 mean((mpg - predict(lm.fit, Auto))[-train]^2)
+
 lm.fit2 <- lm(mpg ~ poly(horsepower, 2), data = Auto, 
     subset = train)
 mean((mpg - predict(lm.fit2, Auto))[-train]^2)
+
 lm.fit3 <- lm(mpg ~ poly(horsepower, 3), data = Auto, 
     subset = train)
 mean((mpg - predict(lm.fit3, Auto))[-train]^2)
+
 ```
 
 Using this split of the observations into a training set and a validation set,
