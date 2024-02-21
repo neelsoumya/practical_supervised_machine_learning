@@ -9,7 +9,7 @@ knitr::opts_chunk$set(error = TRUE)
 
 # Cross-Validation 
 
-In this lab, we explore the resampling techniques covered in this chapter. Some of the commands in this lab may take a while to run on your computer.
+In this lab, we explore the concepts of cross-validation.
 
 ## The Validation Set Approach
 
@@ -169,7 +169,7 @@ When we instead perform $k$-fold CV, then the two numbers associated with `delta
 as in (5.3). The second is a bias-corrected version. On this data set, the two estimates are very similar to each other.
 
 
-This same concept of cross-validation can be used in other algorithms (neural networks, support vector machines, random forests).
+This same concept of cross-validation can be used in other algorithms (neural networks, support vector machines, random forests, etc.).
 
 
 
