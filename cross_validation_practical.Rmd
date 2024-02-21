@@ -151,6 +151,7 @@ for (i in 1:10) {
 
 cv.error
 plot(cv.error)
+
 ```
 
 As in Figure 5.4, we see a sharp drop in the estimated test MSE between the linear and quadratic fits, but then no clear improvement from using higher-order polynomials.
@@ -161,8 +162,11 @@ The `cv.glm()` function can also be used to implement $k$-fold CV. Below we use 
 We once again set a random seed and initialize a vector in which we will store the CV errors corresponding to the polynomial fits of orders one to ten.
 
 ```{r chunk10}
+
 set.seed(17)
+
 cv.error.10 <- rep(0, 10)
+
 for (i in 1:10) {
   glm.fit <- glm(mpg ~ poly(horsepower, i), data = Auto)
   cv.error.10[i] <- cv.glm(Auto, glm.fit, K = 10)$delta[1]
@@ -170,6 +174,7 @@ for (i in 1:10) {
 
 cv.error.10
 plot(cv.error.10)
+
 ```
 
 Notice that the computation time is shorter than that of LOOCV.
