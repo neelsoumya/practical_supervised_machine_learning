@@ -52,7 +52,7 @@ run the script `installer.R` in R Studio.
 
 For an exercise, do these problems.
 
-* Download data from
+* Exercise 1: Download data from
 
 https://github.com/neelsoumya/teaching_reproducible_science_R/blob/main/metagene_score.csv
 
@@ -62,7 +62,7 @@ The data is also available here
 
 https://github.com/neelsoumya/practical_supervised_machine_learning/blob/main/metagene_score.csv
 
-* Download data from
+* Exercise 2: Download data from
 
 https://archive.ics.uci.edu/dataset/2/adult
 
@@ -89,6 +89,8 @@ More practical tutorials and R code
 
 ## Acknowledgements
 
+I thank Dr. Bajuna Salehe for useful discussions and feedback.
+
 All material is take from the following resources:
 
 * https://www.statlearning.com/resources-second-edition
@@ -100,3 +102,6 @@ All material is take from the following resources:
 ## Contact
 
 Soumya Banerjee
+
+sb2333@cam.ac.uk
+
