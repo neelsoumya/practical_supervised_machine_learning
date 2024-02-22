@@ -353,6 +353,8 @@ https://github.com/neelsoumya/practical_supervised_machine_learning/blob/main/di
 
 * Build a random forest model to predict diabetes outcome (0/1)
 
+* Check the confusion matrix
+
 * Plot the out of bag (OOB) error as a function of the number of trees
 
 
