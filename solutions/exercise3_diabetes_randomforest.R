@@ -75,3 +75,7 @@ vector_num_trees = 1:nrow(rf_model$err.rate) # number of trees
 # plot
 plot(vector_num_trees, oob_error, 
      xlab = "Number of trees", ylab = "OOB error")
+
+
+##############################
+# 
