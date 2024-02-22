@@ -73,6 +73,18 @@ The data is also available in the `adult` folder here
 https://github.com/neelsoumya/practical_supervised_machine_learning/tree/main/adult
 
 
+* Exercise 3: Download the data from
+
+https://github.com/neelsoumya/practical_supervised_machine_learning/blob/main/diabetes.csv
+
+
+* Remember to visualize the data and normalize features
+
+* Build a random forest model to predict diabetes outcome (0/1)
+
+* Plot the out of bag (OOB) error as a function of the number of trees
+
+
 ## Resources
 
 Free PDF of book and R code 
