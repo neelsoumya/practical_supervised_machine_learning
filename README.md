@@ -78,11 +78,11 @@ https://github.com/neelsoumya/practical_supervised_machine_learning/tree/main/ad
 https://github.com/neelsoumya/practical_supervised_machine_learning/blob/main/diabetes.csv
 
 
-* Remember to visualize the data and normalize features
+    * Remember to visualize the data and normalize features
 
-* Build a random forest model to predict diabetes outcome (0/1)
+    * Build a random forest model to predict diabetes outcome (0/1)
 
-* Plot the out of bag (OOB) error as a function of the number of trees
+    * Plot the out of bag (OOB) error as a function of the number of trees
 
 
 ## Resources
