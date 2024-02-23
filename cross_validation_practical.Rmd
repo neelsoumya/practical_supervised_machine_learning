@@ -220,6 +220,7 @@ The data is also available in the adult folder here
 
 https://github.com/neelsoumya/practical_supervised_machine_learning/tree/main/adult
 
+How would you select the features that go in the logistic regression model?
 
 <!-- ## The Bootstrap -->
 
