@@ -360,7 +360,7 @@ https://github.com/neelsoumya/practical_supervised_machine_learning/blob/main/di
 
 
 
-## Boosting
+## Boosting (OPTIONAL)
 
 
 Here we use the `gbm` package, and within it the `gbm()` function, to fit boosted regression trees to the `Boston` data set. We run `gbm()` with the option `distribution = "gaussian"` since this is a regression problem; if it were a binary classification problem, we would use `distribution = "bernoulli"`.
