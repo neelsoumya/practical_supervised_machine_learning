@@ -84,6 +84,7 @@ https://github.com/neelsoumya/practical_supervised_machine_learning/blob/main/di
 
     * Plot the out of bag (OOB) error as a function of the number of trees
 
+Solutions are in the `solutions` directory.
 
 ## Resources
 
