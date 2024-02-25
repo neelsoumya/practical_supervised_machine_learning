@@ -68,6 +68,8 @@ https://archive.ics.uci.edu/dataset/2/adult
 
 and train a classifier to predict if income > 50K or < 50K (binary classifier). Do this with cross-validation.  Write your own R code to do this task. You can work in groups. Do this in class.
 
+Challenge: Use cross-validation to select a few important features.
+
 The data is also available in the `adult` folder here
 
 https://github.com/neelsoumya/practical_supervised_machine_learning/tree/main/adult
