@@ -35,7 +35,22 @@ nrow(Auto)
 plot(Auto$horsepower, Auto$mpg)
 # how would we model this?
 
-train <- sample(392, 196)
+# create a test set
+sampled_indices <- sample(c(TRUE,FALSE), 
+                          nrow(Auto), 
+                          replace = TRUE, 
+                          prob = c(0.75,0.25)
+                          )
+
+# training
+Auto_training_cv <- Auto[sampled_indices,]
+# test
+Auto_test <- Auto[!sampled_indices,]
+
+Auto = Auto_training_cv
+
+# train <- sample(392, 196)
+train <- sample(nrow(Auto), 196)
 
 ```
 
@@ -83,7 +98,8 @@ If we choose a different training set instead, then we will obtain somewhat diff
 
 set.seed(2)
 
-train <- sample(392, 196)
+# train <- sample(392, 196)
+train <- sample(nrow(Auto), 196)
 
 lm.fit <- lm(mpg ~ horsepower, subset = train)
 mean((mpg - predict(lm.fit, Auto))[-train]^2)
@@ -150,7 +166,9 @@ for (i in 1:10) {
 }
 
 cv.error
-plot(cv.error)
+plot(cv.error, ylab = 'Cross-validation error', xlab = 'Degree of polynomial')
+
+# TOOD: predict on test set using best model
 
 ```
 
