@@ -168,7 +168,16 @@ for (i in 1:10) {
 cv.error
 plot(cv.error, ylab = 'Cross-validation error', xlab = 'Degree of polynomial')
 
-# TOOD: predict on test set using best model
+
+# pick the best model (degree 2 polynomial)
+glm_fit_degree2 = glm(mpg ~ poly(horsepower, 2), data = Auto)
+
+# predict on test set using best model
+fit_values_test_degree2 = predict(glm_fit_degree2, newdata = Auto_test)
+
+# calculate the test error
+(fit_values_test_degree2 - Auto_test$mpg)^2
+mean((fit_values_test_degree2 - Auto_test$mpg)^2)
 
 ```
 
@@ -191,7 +200,10 @@ for (i in 1:10) {
 }
 
 cv.error.10
-plot(cv.error.10)
+plot(cv.error.10, ylab = 'Cross-validation error', xlab = 'Degree of polynomial')
+
+# EXERCISE: calculate the test error
+
 
 ```
 
