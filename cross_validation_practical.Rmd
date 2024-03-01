@@ -202,10 +202,15 @@ for (i in 1:10) {
 cv.error.10
 plot(cv.error.10, ylab = 'Cross-validation error', xlab = 'Degree of polynomial')
 
+############################################
 # EXERCISE: calculate the test error
+############################################
 
 
 ```
+
+
+EXERCISE: calculate the test error
 
 Notice that the computation time is shorter than that of LOOCV.
 (In principle, the computation time for LOOCV for a least squares linear model should be faster than for $k$-fold CV, due to the availability
