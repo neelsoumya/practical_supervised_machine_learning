@@ -148,6 +148,13 @@ glm.fit <- glm(mpg ~ horsepower, data = Auto)
 
 cv.err <- cv.glm(Auto, glm.fit)
 # The default is to set K equal to the number of observations in data which gives the usual leave-one-out cross-validation
+
+######################################
+# EXPLAIN THE MAGIC OF cv.glm()
+#    show slides and explain what
+#    cross-validation is
+######################################
+
 cv.err$delta
 ```
 
