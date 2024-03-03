@@ -281,6 +281,8 @@ See
 
 https://glmnet.stanford.edu/articles/glmnet.html
 
+Need more of a challenge? See the `additional_code` folder and see the caret programs.
+
 <!-- ## The Bootstrap -->
 
 
