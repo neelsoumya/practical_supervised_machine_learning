@@ -15,16 +15,21 @@ In this lab, we explore the concepts of cross-validation.
 
 We explore the use of the validation set approach in order to estimate the test error rates that result from fitting various linear models on the `Auto` data set.
 
-Before we begin, we use the `set.seed()` function in order to set a *seed* for `R`'s random number generator, so that the reader of this book will
-obtain precisely the same results as those shown below. It is generally
-a good idea to set a random seed when performing an analysis such as cross-validation that contains an
-element of randomness, so that the results obtained can be reproduced precisely at a later time.
+Before we begin, we use the `set.seed()` function in order to set a *seed* for `R`'s random number generator, so that the reader of this book will obtain precisely the same results as those shown below. It is generally a good idea to set a random seed when performing an analysis such as cross-validation that contains an element of randomness, so that the results obtained can be reproduced precisely at a later time.
 
 We begin by using the
 `sample()` function to split the set of observations into two halves, by selecting a random subset of $196$ observations out of the original $392$ observations. We  refer
 to these observations as the training set.
 
 ```{r chunk1}
+
+###############################
+# 1. clarify concepts again
+# 2. any doubts? 
+# 3. ISLR book
+# 4. challenge questions
+###############################
+
 library(ISLR2)
 
 set.seed(1)
@@ -35,7 +40,7 @@ nrow(Auto)
 plot(Auto$horsepower, Auto$mpg)
 # how would we model this?
 
-# create a test set
+# create a test set 75%-25% split (arbitrary)
 sampled_indices <- sample(c(TRUE,FALSE), 
                           nrow(Auto), 
                           replace = TRUE, 
