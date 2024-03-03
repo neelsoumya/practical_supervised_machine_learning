@@ -267,7 +267,13 @@ The data is also available in the adult folder here
 
 https://github.com/neelsoumya/practical_supervised_machine_learning/tree/main/adult
 
+* Challenge exercise 3
+
 How would you select the features that go in the logistic regression model?
+
+Think of a brute force approach.
+
+Can you think of a more sophisticated apporach?
 
 <!-- ## The Bootstrap -->
 
