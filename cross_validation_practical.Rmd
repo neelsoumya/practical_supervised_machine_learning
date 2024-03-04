@@ -181,7 +181,7 @@ cv.error
 plot(cv.error, ylab = 'Cross-validation error', xlab = 'Degree of polynomial')
 
 
-# pick the best model (degree 2 polynomial)
+# pick the best model (degree 2 or degree 3 polynomial)
 glm_fit_degree2 = glm(mpg ~ poly(horsepower, 2), data = Auto)
 
 # predict on test set using best model
