@@ -165,8 +165,8 @@ cv.err$delta
 The `cv.glm()` function produces a list with several components.  The two numbers in the `delta` vector contain the cross-validation results. In this case the numbers are identical (up to two decimal places). Below, we discuss a situation in which the two numbers differ. Our cross-validation estimate for the test error is approximately $24.23$.
 
 We can repeat this procedure for increasingly complex polynomial fits.
- To automate the process, we use the  `for()` function to initiate a *for loop* which iteratively fits polynomial regressions for polynomials of order $i=1$ to $i=10$, computes the associated cross-validation error, and stores it in the $i$th element of the vector `cv.error`.
- We begin by initializing the vector. 
+To automate the process, we use the  `for()` function to initiate a *for loop* which iteratively fits polynomial regressions for polynomials of order $i=1$ to $i=10$, computes the associated cross-validation error, and stores it in the $i$th element of the vector `cv.error`.
+We begin by initializing the vector. 
 
 ```{r chunk9}
 cv.error <- rep(0, 10)
