@@ -266,6 +266,8 @@ The data is also available in the adult folder here
 
 https://github.com/neelsoumya/practical_supervised_machine_learning/tree/main/adult
 
+Hint: Do not forget to do the basics (like data cleaning, visualization, feature scaling, etc.)
+
 * Challenge exercise 3
 
 How would you select the features that go in the logistic regression model?
