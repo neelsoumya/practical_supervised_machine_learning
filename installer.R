@@ -7,6 +7,7 @@ install.packages('gbm')
 install.packages('rmarkdown')
 install.packages('knitr')
 install.packages('caret')
+install.packages('glmnet')
 
 #install.packages('luz')
 #install.packages('torch')
