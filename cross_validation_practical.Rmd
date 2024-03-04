@@ -281,6 +281,8 @@ See
 
 https://glmnet.stanford.edu/articles/glmnet.html
 
+https://glmnet.stanford.edu/articles/glmnet.html#logistic-regression-family-binomial
+
 Need more of a challenge? See the `additional_code` folder and see the caret programs.
 
 <!-- ## The Bootstrap -->
