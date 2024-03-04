@@ -74,6 +74,22 @@ The data is also available in the `adult` folder here
 
 https://github.com/neelsoumya/practical_supervised_machine_learning/tree/main/adult
 
+`Challenge exercise`
+
+How would you select the features that go in the logistic regression model?
+
+Think of a brute force approach.
+
+Can you think of a more sophisticated apporach?
+
+For an advanced exercise use the `glmnet` package in R.
+
+See
+
+https://glmnet.stanford.edu/articles/glmnet.html#logistic-regression-family-binomial
+
+Need more of a challenge? See the `additional_code` folder and see the caret programs.
+
 
 * Exercise 3: Download the data from
 
