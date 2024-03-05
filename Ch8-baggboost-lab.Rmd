@@ -209,6 +209,7 @@ age: proportion of owner-occupied units built prior to 1940.
 set.seed(1)
 
 # ?Boston
+# View(Boston)
 
 # A data set containing housing values in 506 suburbs of Boston.
 
@@ -275,6 +276,9 @@ Here we apply bagging and random forests to the `Boston` data, using the `random
 Recall that bagging is simply a special case of a random forest with
 $m=p$. Therefore, the
 `randomForest()` function can be used to perform both random forests and bagging.
+
+mtry:	Number of variables randomly sampled as candidates at each split. Note that the default values are different for classification (sqrt(p) where p is number of variables in x) and regression (p/3)
+
 We perform bagging as follows:
 
 ```{r chunk19}
@@ -284,6 +288,9 @@ set.seed(1)
 
 bag.boston <- randomForest(medv ~ ., data = Boston,
     subset = train, mtry = 12, importance = TRUE)
+
+# mtry	
+# Number of variables randomly sampled as candidates at each split. Note that the default values are different for classification (sqrt(p) where p is number of variables in x) and regression (p/3)
 
 bag.boston
 
