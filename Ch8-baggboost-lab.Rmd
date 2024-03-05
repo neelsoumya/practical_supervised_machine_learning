@@ -20,8 +20,7 @@ We first use classification trees  to analyze the `Carseats` data set.
 
 This is a simulated data set containing sales of child car seats at 400 different stores.
 
-In these data, `Sales` is a continuous variable, and so we begin by recoding it  as a binary variable. We use the `ifelse()` function to create a variable, called `High`, which takes on a value of `Yes` if the `Sales` variable exceeds $8$,
-and takes on a value of `No` otherwise.
+In these data, `Sales` is a continuous variable, and so we begin by recoding it  as a binary variable. We use the `ifelse()` function to create a variable, called `High`, which takes on a value of `Yes` if the `Sales` variable exceeds $8$, and takes on a value of `No` otherwise.
 
 ```{r chunk2}
 library(ISLR2)
