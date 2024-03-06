@@ -16,7 +16,7 @@ The `tree` library is used to construct classification and regression trees.
 library(tree)
 ```
 
-We first use classification trees  to analyze the `Carseats` data set.
+We first use classification trees to analyze the `Carseats` data set.
 
 This is a simulated data set containing sales of child car seats at 400 different stores.
 
