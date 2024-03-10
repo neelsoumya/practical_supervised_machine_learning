@@ -130,7 +130,7 @@ cv.carseats
 
 ```{r}
 # plot size vs. k
-plot(cv.carseats$k, cv.carseats$size)
+# plot(cv.carseats$k, cv.carseats$size)
 
 ```
 
