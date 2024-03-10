@@ -15,16 +15,20 @@ In this lab, we explore the concepts of cross-validation.
 
 We explore the use of the validation set approach in order to estimate the test error rates that result from fitting various linear models on the `Auto` data set.
 
-Before we begin, we use the `set.seed()` function in order to set a *seed* for `R`'s random number generator, so that the reader of this book will
-obtain precisely the same results as those shown below. It is generally
-a good idea to set a random seed when performing an analysis such as cross-validation that contains an
-element of randomness, so that the results obtained can be reproduced precisely at a later time.
+Before we begin, we use the `set.seed()` function in order to set a *seed* for `R`'s random number generator, so that the reader of this book will obtain precisely the same results as those shown below. It is generally a good idea to set a random seed when performing an analysis such as cross-validation that contains an element of randomness, so that the results obtained can be reproduced precisely at a later time.
 
-We begin by using the
-`sample()` function to split the set of observations into two halves, by selecting a random subset of $196$ observations out of the original $392$ observations. We  refer
+We begin by using the `sample()` function to split the set of observations into two halves, by selecting a random subset of $196$ observations out of the original $392$ observations. We refer
 to these observations as the training set.
 
 ```{r chunk1}
+
+###############################
+# 1. clarify concepts again
+# 2. any doubts? 
+# 3. ISLR book
+# 4. challenge questions
+###############################
+
 library(ISLR2)
 
 set.seed(1)
@@ -35,7 +39,22 @@ nrow(Auto)
 plot(Auto$horsepower, Auto$mpg)
 # how would we model this?
 
-train <- sample(392, 196)
+# create a test set 75%-25% split (arbitrary)
+sampled_indices <- sample(c(TRUE,FALSE), 
+                          nrow(Auto), 
+                          replace = TRUE, 
+                          prob = c(0.75,0.25)
+                          )
+
+# training
+Auto_training_cv <- Auto[sampled_indices,]
+# test
+Auto_test <- Auto[!sampled_indices,]
+
+Auto = Auto_training_cv
+
+# train <- sample(392, 196)
+train <- sample(nrow(Auto), 196)
 
 ```
 
@@ -83,7 +102,8 @@ If we choose a different training set instead, then we will obtain somewhat diff
 
 set.seed(2)
 
-train <- sample(392, 196)
+# train <- sample(392, 196)
+train <- sample(nrow(Auto), 196)
 
 lm.fit <- lm(mpg ~ horsepower, subset = train)
 mean((mpg - predict(lm.fit, Auto))[-train]^2)
@@ -132,25 +152,44 @@ glm.fit <- glm(mpg ~ horsepower, data = Auto)
 
 cv.err <- cv.glm(Auto, glm.fit)
 # The default is to set K equal to the number of observations in data which gives the usual leave-one-out cross-validation
+
+######################################
+# EXPLAIN THE MAGIC OF cv.glm()
+#    show slides and explain what
+#    cross-validation is
+######################################
+
 cv.err$delta
 ```
 
 The `cv.glm()` function produces a list with several components.  The two numbers in the `delta` vector contain the cross-validation results. In this case the numbers are identical (up to two decimal places). Below, we discuss a situation in which the two numbers differ. Our cross-validation estimate for the test error is approximately $24.23$.
 
 We can repeat this procedure for increasingly complex polynomial fits.
- To automate the process, we use the  `for()` function to initiate a *for loop* which iteratively fits polynomial regressions for polynomials of order $i=1$ to $i=10$, computes the associated cross-validation error, and stores it in the $i$th element of the vector `cv.error`.
- We begin by initializing the vector. 
+To automate the process, we use the  `for()` function to initiate a *for loop* which iteratively fits polynomial regressions for polynomials of order $i=1$ to $i=10$, computes the associated cross-validation error, and stores it in the $i$th element of the vector `cv.error`.
+We begin by initializing the vector. 
 
 ```{r chunk9}
 cv.error <- rep(0, 10)
 
 for (i in 1:10) {
+  # trting different degree polynomials
   glm.fit <- glm(mpg ~ poly(horsepower, i), data = Auto)
   cv.error[i] <- cv.glm(Auto, glm.fit)$delta[1]
 }
 
 cv.error
-plot(cv.error)
+plot(cv.error, ylab = 'Cross-validation error', xlab = 'Degree of polynomial')
+
+
+# pick the best model (degree 2 or degree 3 polynomial)
+glm_fit_degree2 = glm(mpg ~ poly(horsepower, 2), data = Auto)
+
+# predict on test set using best model
+fit_values_test_degree2 = predict(glm_fit_degree2, newdata = Auto_test)
+
+# calculate the test error
+(fit_values_test_degree2 - Auto_test$mpg)^2
+mean((fit_values_test_degree2 - Auto_test$mpg)^2)
 
 ```
 
@@ -173,9 +212,17 @@ for (i in 1:10) {
 }
 
 cv.error.10
-plot(cv.error.10)
+plot(cv.error.10, ylab = 'Cross-validation error', xlab = 'Degree of polynomial')
+
+############################################
+# EXERCISE: calculate the test error
+############################################
+
 
 ```
+
+
+EXERCISE: calculate the test error
 
 Notice that the computation time is shorter than that of LOOCV.
 (In principle, the computation time for LOOCV for a least squares linear model should be faster than for $k$-fold CV, due to the availability
@@ -220,7 +267,23 @@ The data is also available in the adult folder here
 
 https://github.com/neelsoumya/practical_supervised_machine_learning/tree/main/adult
 
+Hint: Do not forget to do the basics (like data cleaning, visualization, feature scaling, etc.)
+
+* Challenge exercise 3
+
 How would you select the features that go in the logistic regression model?
+
+Think of a brute force approach.
+
+Can you think of a more sophisticated apporach?
+
+For an advanced exercise use the `glmnet` package in R.
+
+See
+
+https://glmnet.stanford.edu/articles/glmnet.html#logistic-regression-family-binomial
+
+Need more of a challenge? See the `additional_code` folder and see the caret programs.
 
 <!-- ## The Bootstrap -->
 
